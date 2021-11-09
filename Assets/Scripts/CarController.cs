@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CutScene : MonoBehaviour
+public class CarController : MonoBehaviour
 {
     [SerializeField] float speed = 15f;
 
