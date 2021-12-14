@@ -5,17 +5,11 @@ using UnityEngine;
 public class LampOffOn : MonoBehaviour
 {
     private new Light light;
-    // Start is called before the first frame update
+
     void Start()
     {
         light = GetComponent<Light>();
         StartCoroutine(LampOnOffCycle());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private IEnumerator LampOnOffCycle()

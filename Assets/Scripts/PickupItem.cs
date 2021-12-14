@@ -10,13 +10,13 @@ public class PickupItem : MonoBehaviour
 
     public GameObject player;
     private PlayerInventory inventory;
-    // Start is called before the first frame update
+
     void Start()
     {
         inventory = player.GetComponent<PlayerInventory>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && enter)
@@ -31,7 +31,7 @@ public class PickupItem : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            Debug.Log("player");
+            //Debug.Log("player");
             enter = true;
         }
 

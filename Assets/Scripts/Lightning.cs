@@ -14,12 +14,7 @@ public class Lightning : MonoBehaviour
         StartCoroutine(StartLightning());
     }
 
-    void Update()
-    {
-        
-    }
-
-    private IEnumerator StartLightning()
+    public IEnumerator StartLightning()
     {
         yield return new WaitForSeconds(8f);
         light.color = Color.white;
@@ -30,6 +25,9 @@ public class Lightning : MonoBehaviour
         light.color = Color.white;
         yield return new WaitForSeconds(0.2f);
         light.color = previousColor;
-        StartCoroutine(StartLightning());
+        if (PlayerController.isInHouse)
+        {
+            StartCoroutine(StartLightning());
+        }
     }
 }

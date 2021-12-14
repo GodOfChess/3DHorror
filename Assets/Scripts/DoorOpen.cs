@@ -41,7 +41,7 @@ public class DoorOpen : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && enter)
         {
             player = GameObject.Find("Player");
-            bool hasKey = player.GetComponent<PlayerInventory>().CheckInventoryFor(keyName); //requires player inventory to work
+            bool hasKey = player.GetComponent<PlayerInventory>().CheckInventoryFor(keyName);
 
             if (hasKey == true)
             {

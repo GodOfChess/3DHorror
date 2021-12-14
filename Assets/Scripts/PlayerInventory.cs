@@ -13,7 +13,7 @@ public class PlayerInventory : MonoBehaviour
     public void PlaceIntoInventory(string itemName)
     {
         Keys.Add(itemName);
-        Debug.Log(Keys);
+        //Debug.Log(Keys);
 
         if (itemName == "FlashLight")
         {

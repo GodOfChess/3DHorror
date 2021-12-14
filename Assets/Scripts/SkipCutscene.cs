@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class SkipCutscene : MonoBehaviour
 {
-    public GameObject cameraFirst, cameraSecond, mainCamera;
-
+    public GameObject camera1, camera2, mainCamera;
     void Start()
     {
-        cameraFirst.SetActive(false);
-        cameraSecond.SetActive(false);
+        camera1.SetActive(false);
+        camera2.SetActive(false);
         mainCamera.SetActive(true);
     }
 }
