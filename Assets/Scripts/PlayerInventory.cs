@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public List<string> InventoryList;
+    public GameObject flashLight;
+    public List<string> Keys;
     private void Start()
     {
-        InventoryList.Add("NO_KEY");
+        Keys.Add("NO_KEY");
     }
     public void PlaceIntoInventory(string itemName)
     {
-        InventoryList.Add(itemName);
-        Debug.Log(InventoryList);
+        Keys.Add(itemName);
+        Debug.Log(Keys);
+
+        if (itemName == "FlashLight")
+        {
+            flashLight.SetActive(true);
+        }
     }
 
     public bool CheckInventoryFor(string itemName)
     {
-        bool item = InventoryList.Contains(itemName);
+        bool item = Keys.Contains(itemName);
         return item;
     }
 }

@@ -8,11 +8,12 @@ public class PickupItem : MonoBehaviour
 
     bool enter = false;
 
-    GameObject player;
+    public GameObject player;
+    private PlayerInventory inventory;
     // Start is called before the first frame update
     void Start()
     {
-        
+        inventory = player.GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -20,8 +21,8 @@ public class PickupItem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && enter)
         {
-            player = GameObject.Find("Player");
-            player.GetComponent<PlayerInventory>().PlaceIntoInventory(ItemName);
+            inventory.PlaceIntoInventory(ItemName);
+            Destroy(gameObject);
         }
     }
 
