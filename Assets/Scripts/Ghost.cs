@@ -27,14 +27,17 @@ public class Ghost : MonoBehaviour
 
     public IEnumerator StartHunt()
     {
-        isHunt = true;
-
+        Debug.Log(1);
         yield return new WaitForSeconds(10f);
+        Debug.Log(2);
         isHunt = false;
-        gameObject.SetActive(false);
-
+        //gameObject.SetActive(false);
+        Debug.Log(3);
         yield return new WaitForSeconds(10f);
-        gameObject.SetActive(true);
+        Debug.Log(4);
+        //gameObject.SetActive(true);
+        isHunt = true;
+        Debug.Log(5);
         StartCoroutine(StartHunt());
     }
 

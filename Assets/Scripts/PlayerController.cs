@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Animator door = null;
+    
     public GameObject ghost;
     public GameObject rain;
     public static bool isInHouse = true;
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "HouseHunt")
         {
+            door.Play("doorClose", 0, 0.0f);
             isInHouse = false;
             rain.SetActive(false);
             other.gameObject.SetActive(false);

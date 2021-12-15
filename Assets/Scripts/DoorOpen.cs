@@ -17,7 +17,8 @@ public class DoorOpen : MonoBehaviour
     float currentRotationAngle;
     float openTime = 0;
 
-    GameObject player;
+    public GameObject player;
+    private PlayerInventory inventory;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,9 @@ public class DoorOpen : MonoBehaviour
 
         //Set Collider as trigger
         GetComponent<Collider>().isTrigger = true;
+        inventory = player.GetComponent<PlayerInventory>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -38,14 +39,13 @@ public class DoorOpen : MonoBehaviour
         }
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, Mathf.LerpAngle(currentRotationAngle, defaultRotationAngle + (open ? doorOpenAngle : 0), openTime), transform.localEulerAngles.z);
 
-        if (Input.GetKeyDown(KeyCode.F) && enter)
+        if (Input.GetKeyDown(KeyCode.E) && enter)
         {
-            player = GameObject.Find("Player");
-            bool hasKey = player.GetComponent<PlayerInventory>().CheckInventoryFor(keyName);
+            bool hasKey = inventory.CheckInventoryFor(keyName);
 
             if (hasKey == true)
             {
-                Debug.Log("F");
+
                 open = !open;
                 currentRotationAngle = transform.localEulerAngles.y;
                 openTime = 0;
@@ -56,10 +56,11 @@ public class DoorOpen : MonoBehaviour
     // Display a simple info message when player is inside the trigger area (This is for testing purposes only so you can remove it)
     void OnGUI()
     {
-        if (enter)
+        bool hasKey = inventory.CheckInventoryFor(keyName);
+        if (enter && hasKey)
         {
-            Debug.Log("rect");
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 155, 30), "Press 'F' to " + (open ? "close" : "open") + " the door");
+
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 155, 30), "Press 'E' to " + (open ? "close" : "open") + " the door");
         }
     }
     //
@@ -67,9 +68,6 @@ public class DoorOpen : MonoBehaviour
     // Activate the Main function when Player enter the trigger area
     void OnTriggerEnter(Collider other)
     {
-        
-        
-        Debug.Log("asdf");
         if (other.CompareTag("Player"))
         {
             Debug.Log("player");
