@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class DoorOpen : MonoBehaviour
 {
@@ -12,22 +14,28 @@ public class DoorOpen : MonoBehaviour
 
     bool open = false;
     bool enter = false;
+    bool final = false;
 
     float defaultRotationAngle;
     float currentRotationAngle;
     float openTime = 0;
 
     public GameObject player;
+    private SkinnedMeshRenderer ghost;
+    private Animator anim;
     private PlayerInventory inventory;
+    private FirstPersonController controller;
     // Start is called before the first frame update
     void Start()
     {
         defaultRotationAngle = transform.localEulerAngles.y;
         currentRotationAngle = transform.localEulerAngles.y;
-
         //Set Collider as trigger
         GetComponent<Collider>().isTrigger = true;
         inventory = player.GetComponent<PlayerInventory>();
+        anim = GameObject.Find("FinalGhost").GetComponent<Animator>();
+        ghost = GameObject.Find("FinalWhiteClown").GetComponent<SkinnedMeshRenderer>();
+        controller = player.GetComponent<FirstPersonController>();
     }
 
     void Update()
@@ -57,10 +65,9 @@ public class DoorOpen : MonoBehaviour
     void OnGUI()
     {
         bool hasKey = inventory.CheckInventoryFor(keyName);
-        if (enter && hasKey)
+        if (enter && hasKey && final == false)
         {
-
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 155, 30), "Press 'E' to " + (open ? "close" : "open") + " the door");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 155, 40), "Нажмите 'E', чтобы " + (open ? "закрыть" : "открыть") + " дверь");
         }
     }
     //
@@ -73,6 +80,28 @@ public class DoorOpen : MonoBehaviour
             Debug.Log("player");
             enter = true;
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "LastTag" && inventory.CheckInventoryFor("последний ключ"))
+            {
+                final = true;
+                ghost.enabled = true;
+                controller.m_WalkSpeed = 0;
+                controller.m_RunSpeed = 0;
+                controller.m_JumpSpeed = 0;
+                anim.SetTrigger("Final");
+                Invoke("ToMenu", 6f);
+            }
+        }
+    }
+
+    private void ToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     // Deactivate the Main function when Player exit the trigger area

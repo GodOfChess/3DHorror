@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Ghost : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Ghost : MonoBehaviour
     private Transform startPoint, playerPos;
     public Transform player;
     private bool isHunt = false;
+    public SkinnedMeshRenderer mesh;
+
 
     void Start()
     {
@@ -25,21 +28,38 @@ public class Ghost : MonoBehaviour
         }
     }
 
+    //public IEnumerator StartHunt()
+    //{
+    //    Debug.Log(1);
+    //    yield return new WaitForSeconds(11f);
+    //    Debug.Log(2);
+    //    isHunt = false;
+    //    //gameObject.SetActive(false);
+    //    Debug.Log(3);
+    //    yield return new WaitForSeconds(10f);
+    //    Debug.Log(4);
+    //    //gameObject.SetActive(true);
+    //    isHunt = true;
+    //    Debug.Log(5);
+    //    StartCoroutine(StartHunt());
+    //}
+
     public IEnumerator StartHunt()
     {
-        Debug.Log(1);
         yield return new WaitForSeconds(10f);
-        Debug.Log(2);
-        isHunt = false;
-        //gameObject.SetActive(false);
-        Debug.Log(3);
-        yield return new WaitForSeconds(10f);
-        Debug.Log(4);
-        //gameObject.SetActive(true);
+        mesh.enabled = true;
         isHunt = true;
-        Debug.Log(5);
+        yield return new WaitForSeconds(10f);
+        mesh.enabled = false;
+        isHunt = false;
         StartCoroutine(StartHunt());
     }
-
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
 
 }

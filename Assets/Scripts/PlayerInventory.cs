@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     public GameObject flashLight;
+    public AudioSource screamer;
     public List<string> Keys;
     private void Start()
     {
@@ -13,11 +14,11 @@ public class PlayerInventory : MonoBehaviour
     public void PlaceIntoInventory(string itemName)
     {
         Keys.Add(itemName);
-        //Debug.Log(Keys);
 
         if (itemName == "FlashLight")
         {
             flashLight.SetActive(true);
+            screamer.Play();
         }
     }
 

@@ -31,7 +31,6 @@ public class PickupItem : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            //Debug.Log("player");
             enter = true;
         }
 
@@ -49,8 +48,7 @@ public class PickupItem : MonoBehaviour
     {
         if (enter)
         {
-            Debug.Log("rect");
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 155, 40), "Press 'E' to pick up the " + ItemName);
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 155, 40), "Нажмите 'E', чтобы взять " + ItemName);
         }
     }
 }
