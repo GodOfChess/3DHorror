@@ -6434,7 +6434,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557838696}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -6452,7 +6452,7 @@ PlayableDirector:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557838696}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: e8cf548e75442e64fac9ac53b83ed3cd, type: 2}
   m_InitialState: 1
@@ -17331,7 +17331,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1345092035}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.3
   m_Height: 2.3923516
   m_Direction: 1
@@ -17966,7 +17966,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1386878027}
-  - component: {fileID: 1386878026}
   m_Layer: 0
   m_Name: SkipController
   m_TagString: Untagged
@@ -17974,21 +17973,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1386878026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386878025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39303b4a512e9c64b826849d1b42b376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera1: {fileID: 687580172}
-  camera2: {fileID: 358879039}
-  mainCamera: {fileID: 641719081}
 --- !u!4 &1386878027
 Transform:
   m_ObjectHideFlags: 0
