@@ -25,6 +25,8 @@ public class DoorOpen : MonoBehaviour
     private Animator anim;
     private PlayerInventory inventory;
     private FirstPersonController controller;
+    public AudioSource attack;
+    public GameObject count;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,7 +79,6 @@ public class DoorOpen : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("player");
             enter = true;
         }
     }
@@ -89,11 +90,13 @@ public class DoorOpen : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && gameObject.tag == "LastTag" && inventory.CheckInventoryFor("последний ключ"))
             {
                 final = true;
+                count.SetActive(false);
                 ghost.enabled = true;
                 controller.m_WalkSpeed = 0;
                 controller.m_RunSpeed = 0;
                 controller.m_JumpSpeed = 0;
                 anim.SetTrigger("Final");
+                attack.Play();
                 Invoke("ToMenu", 6f);
             }
         }
@@ -102,6 +105,8 @@ public class DoorOpen : MonoBehaviour
     private void ToMenu()
     {
         SceneManager.LoadScene(0);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // Deactivate the Main function when Player exit the trigger area

@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public GameObject rain;
     public static bool isInHouse = true;
     private Ghost ghostController;
+    public AudioSource screamer, main;
+    public GameObject count;
 
     private void Start()
     {
@@ -20,8 +22,11 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "HouseHunt")
         {
             door.Play("doorClose", 0, 0.0f);
+            count.SetActive(true);
+            screamer.Play();
             isInHouse = false;
             rain.SetActive(false);
+            main.Play();
             other.gameObject.SetActive(false);
             StartCoroutine(ghostController.StartHunt());
         }

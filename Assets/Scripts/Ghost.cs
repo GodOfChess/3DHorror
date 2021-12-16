@@ -7,16 +7,16 @@ using UnityEngine.SceneManagement;
 public class Ghost : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
-    private Transform startPoint, playerPos;
+    private Transform playerPos;
     public Transform player;
     private bool isHunt = false;
     public SkinnedMeshRenderer mesh;
+    public AudioSource main, boss;
 
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        startPoint = GetComponent<Transform>();
     }
 
     private void Update()
@@ -28,30 +28,18 @@ public class Ghost : MonoBehaviour
         }
     }
 
-    //public IEnumerator StartHunt()
-    //{
-    //    Debug.Log(1);
-    //    yield return new WaitForSeconds(11f);
-    //    Debug.Log(2);
-    //    isHunt = false;
-    //    //gameObject.SetActive(false);
-    //    Debug.Log(3);
-    //    yield return new WaitForSeconds(10f);
-    //    Debug.Log(4);
-    //    //gameObject.SetActive(true);
-    //    isHunt = true;
-    //    Debug.Log(5);
-    //    StartCoroutine(StartHunt());
-    //}
-
     public IEnumerator StartHunt()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(60f);
         mesh.enabled = true;
         isHunt = true;
-        yield return new WaitForSeconds(10f);
+        main.Stop();
+        boss.Play();
+        yield return new WaitForSeconds(30f);
         mesh.enabled = false;
         isHunt = false;
+        boss.Stop();
+        main.Play();
         StartCoroutine(StartHunt());
     }
     public void OnTriggerEnter(Collider other)
