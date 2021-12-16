@@ -1443,15 +1443,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.741
+      value: 24.32
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 552.2
+      value: 354.38
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1646,12 +1646,6 @@ Transform:
   m_Father: {fileID: 1102566447}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &144384577 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 115310781}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &145791715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15409,7 +15403,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0421\u043E\u0431\u0440\u0430\u043D\u043E \u043A\u043B\u044E\u0447\u0435\u0439:
-    0"
+    0/7"
 --- !u!222 &1225261772
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17994,7 +17988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera1: {fileID: 687580172}
   camera2: {fileID: 358879039}
-  mainCamera: {fileID: 144384577}
+  mainCamera: {fileID: 641719081}
 --- !u!4 &1386878027
 Transform:
   m_ObjectHideFlags: 0
@@ -30172,7 +30166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 130382, guid: 47af58fd905aee649a315f604914d38e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 161630, guid: 47af58fd905aee649a315f604914d38e, type: 3}
       propertyPath: m_IsActive

@@ -9,7 +9,6 @@ public class Ghost : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Transform playerPos;
     public Transform player;
-    private bool isHunt = false;
     public SkinnedMeshRenderer mesh;
     public AudioSource main, boss;
 
@@ -17,27 +16,25 @@ public class Ghost : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.speed = 0;
     }
 
     private void Update()
     {
-        if (isHunt)
-        {
-            playerPos = player.GetComponent<Transform>();
-            navMeshAgent.SetDestination(playerPos.position);
-        }
+        playerPos = player.GetComponent<Transform>();
+        navMeshAgent.SetDestination(playerPos.position);
     }
 
     public IEnumerator StartHunt()
     {
         yield return new WaitForSeconds(60f);
         mesh.enabled = true;
-        isHunt = true;
+        navMeshAgent.speed = 3.5f;
         main.Stop();
         boss.Play();
         yield return new WaitForSeconds(30f);
         mesh.enabled = false;
-        isHunt = false;
+        navMeshAgent.speed = 0;
         boss.Stop();
         main.Play();
         StartCoroutine(StartHunt());

@@ -8,9 +8,8 @@ public class PickupItem : MonoBehaviour
     public string ItemName;
 
     bool enter = false;
-    private int countKey;
+    private static int countKey = 0;
     public Text countText;
-    private bool isGet;
 
     public GameObject player;
     private PlayerInventory inventory;
@@ -23,11 +22,20 @@ public class PickupItem : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E) && enter)
+        {
+            inventory.PlaceIntoInventory(ItemName);
+            Destroy(gameObject);
+            if (ItemName != "FlashLight")
+            {
+                countKey += 1;
+                countText.text = $"Собрано ключей: {countKey}/7";
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        isGet = false;
         if (other.CompareTag("Player"))
         {
             enter = true;
@@ -43,24 +51,11 @@ public class PickupItem : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (isGet == false && Input.GetKeyDown(KeyCode.E) && enter)
-        {
-            isGet = true;
-            inventory.PlaceIntoInventory(ItemName);
-            Destroy(gameObject);
-            countText.text = $"Собрано ключей: {countKey}";
-            countKey++;
-        }
-    }
-
     void OnGUI()
     {
         if (enter)
         {
             GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 155, 40), "Нажмите 'E', чтобы взять " + ItemName);
-
         }
     }
 }
