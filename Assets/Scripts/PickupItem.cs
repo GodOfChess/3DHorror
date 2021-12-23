@@ -8,7 +8,7 @@ public class PickupItem : MonoBehaviour
     public string ItemName;
 
     bool enter = false;
-    private static int countKey = 0;
+    public static int countKey = 0;
     public Text countText;
 
     public GameObject player;

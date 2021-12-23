@@ -104,6 +104,8 @@ public class DoorOpen : MonoBehaviour
 
     private void ToMenu()
     {
+        anim.SetTrigger("Start");
+        PickupItem.countKey = 0;
         SceneManager.LoadScene(0);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            PickupItem.countKey = 0;
             SceneManager.LoadScene(0);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
